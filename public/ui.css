@@ -1,0 +1,206 @@
+body {
+    padding: 0px;
+    margin: 0px;
+    font: 400 13.3333px Arial;
+}
+
+.fish {
+    display: none;
+}
+
+.logo {
+    background-color: #3b5998;
+    text-align: center;
+}
+
+.notice {
+    background-color: rgb(255, 253, 215);
+    padding: 5px;
+    padding-left: 10px;
+    font: 400 13.3333px Roboto;
+}
+
+.bg {
+    background-color: #eceff5;
+}
+
+.input {
+    padding: 12px;
+    box-sizing: border-box;
+    display: block;
+    margin : 0 auto;
+    width: 90%;
+    font: 400 13.3333px Arial;
+    border-width: 1px;
+    border-radius: 4px;
+    border-color: rgb(216, 216, 216)
+}
+
+.loginbtn {
+    padding: 12px;
+    box-sizing: border-box;
+    display: block;
+    margin : 0 auto;
+    width: 90%;
+    background-color: #1877f2;
+    font: 400 13.3333px Arial;
+    border-width: 1px;
+    border-radius: 4px;
+    color: white;
+    font-weight: bold;
+    font-size: 15px
+}
+
+.or {
+    text-align: center;
+    margin: 5px;
+    font-size: 12px
+}
+
+.create {
+    padding: 12px;
+    box-sizing: border-box;
+    display: block;
+    margin : 0 auto;
+    width: 40%;
+    background-color: #00a400;;
+    font: 400 13.3333px Arial;
+    border-width: 1px;
+    border-radius: 4px;
+    color: white;
+    font-weight: bold;
+    font-size: 15px
+}
+
+.forgot {
+    text-align: center;
+    margin: 5px;
+    color: #7596c8;
+    font-size: 12px
+}
+
+.lang {
+    text-align: center;
+    margin: 5px;
+    font-size: 12px;
+    padding: 5px;
+    width: 90%
+}
+
+table {
+    margin-left:auto; 
+    margin-right:auto;
+}
+
+th, td {
+    text-align: center;
+    margin: auto;
+    padding: 2px 10px;
+}
+
+.credit {
+    text-align: center;
+    margin: 5px;
+    font-size: 12px
+}
+
+.banner {
+    background-color: #447fff;
+    text-align: center;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    font-family: monospace; 
+    color: white;
+    font-weight: bold;
+    text-shadow: 4px;
+    font-size: 25px;
+    padding: 25px;
+}
+
+.container {
+    margin: 5% 3%;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    padding: 0px;
+    border-radius: 7px
+}
+
+.headline { 
+    text-align: center;
+    background-color: #447fff;
+    margin: 15px 0px;
+    padding: 15px;
+    font-size: 17px;
+    color: white;
+    font-weight: bold;
+    border-radius: 7px
+}
+
+.bigtext {
+    text-align: center;
+    margin: 15px;
+    font-size: 23px;
+    color: black;
+    font-weight: bold;
+}
+
+.startbtn {
+    padding: 12px;
+    box-sizing: border-box;
+    display: block;
+    margin : 0 auto;
+    width: 60%;
+    background-color: #23da43;
+    font: 400 13.3333px Arial;
+    border-width: 1px;
+    border-radius: 4px;
+    color: black;
+    font-weight: bold;
+    font-size: 15px
+}
+
+.results {
+    display: none;
+}
+
+.score {
+    text-align: center;
+    margin: 15px;
+    font-size: 30px;
+    color: #447fff;
+    font-weight: bold;
+}
+
+.error {
+    display: none;
+}
+
+.errornotice{
+    background-color: rgb(255, 138, 138);
+    text-align: center;
+    color: white;
+    border-radius: 7px;
+    padding: 8px;
+}
+
+.mediumtext {
+    text-align: center;
+    margin: 15px;
+    font-size: 18px;
+    color: black;
+    font-weight: bold;
+}
+
+.tip {
+    background-color: rgb(255, 253, 133);
+    text-align: center;
+    color: black;
+    border-radius: 7px;
+    padding: 8px;
+}
+
+.questions {
+    display: none;
+}
+
+.pad {
+    padding: 10px;
+}
